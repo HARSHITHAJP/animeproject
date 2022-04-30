@@ -1,0 +1,84 @@
+{% extends 'allbase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+  <style>
+  .formicon{
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0 auto;
+    border-radius: 10%;
+  }
+  #form{
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .form-control{font-size: 2rem;}
+
+  .container1{
+    padding: 0px;
+    border: solid;
+    align: center;
+    font-size: 2rem;}
+
+  .row{
+    padding: 10px;
+    align: center;
+    font-size: 2rem;
+    /*background-color: #474e5d;
+    color: white;*/
+  }
+
+  .btn 
+  {
+    display: inline-block;
+        background-color: #7b38d8;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+
+  }
+  </style>
+  <br>
+  <div class="row">
+  <div class="col-md-3">
+    <div class="card card-body">
+    <div class="container1">
+      <a class="btn btn-dark btn-lg" href= "{% url 'home_url' %}"> <h2>Back to home</h2></a><hr>
+      <hr>
+      <h2 style="text-align: center">Manga form</h2>
+      <hr>
+      <img class="formicon" src="{% static 'img/form-icon.jpg' %}">
+    </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="col-md-4">
+    <div class="card card-body">
+        <p class="text-center"><strong>fill up the form and upload the manga</strong></p>
+     
+      <form method="POST">
+        {% csrf_token %}
+
+        {{form|crispy }}
+      <input class="btn btn-primary btn-block"  type="submit" name="Update Information">
+      </form>
+    </div>
+  </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'allbase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+
+{% block content %}
+
+  <div class="container">
+      <div class="row">
+        <div class="container">
+          <h2 class="text-center">MANGA LIST</h2><br>            
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th>Book ISBN</th>
+                <th>title</th>
+                <th>genre</th>
+                <th>author</th>
+                <th>description</th>
+                <th>posted_date_time</th>
+                <th>posted_by</th>
+                <th>book_pic</th>
+                <th>book</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for each in temp %}
+              <tr>
+                <td>{{each.book_isbn}}</td>
+                <td>{{each.title}}</td>
+                <td>{{each.genre}}</td>
+                <td>{{each.author}}</td>
+                <td>{{each.description}}</td>
+                <td>{{each.posted_date_time}}</td>
+                <td>{{each.posted_by}}</td>
+                <td>{{each.book_pic}}</td>
+                <td>{{each.book}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <a class="btn btn-success" href="{% url 'mangaaddform_url' %}">Add Manga</a>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
